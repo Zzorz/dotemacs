@@ -11,9 +11,7 @@
 
 ;; A tree layout file explorer
 (use-package treemacs
-  :bind (([f8]        . treemacs-toggle)
-         ("M-0"       . treemacs-select-window)
-         ("C-c 1"     . treemacs-delete-other-windows))
+  :bind (("C-c t"        . treemacs-toggle))
   :config
   (setq treemacs-follow-after-init          t
         treemacs-width                      30
@@ -33,8 +31,7 @@
 
 ;; Projectile integration for treemacs
 (use-package treemacs-projectile
-  :bind (([M-f8] . treemacs-projectile-toggle)
-         ("C-c p h" . treemacs-projectile-toggle))
+  :bind (("C-c p t" . treemacs-projectile-toggle))
   :config
   (setq treemacs-header-function #'treemacs-projectile-create-header))
 

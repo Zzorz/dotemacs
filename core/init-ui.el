@@ -101,6 +101,10 @@
 ;; Toggle fullscreen
 ;; (bind-keys ([(f11)] . toggle-frame-fullscreen))
 
+(use-package window-numbering
+  :init
+  (window-numbering-mode))
+
 (defun set-transparency (value)
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "nTransparency Value 0 - 100 opaque:")

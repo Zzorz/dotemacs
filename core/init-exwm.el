@@ -29,14 +29,14 @@
                       (start-process-shell-command command nil command)))
 
 
-(exwm-input-set-key (kbd "<XF86AudioRaiseVolume>")
-                    (lambda ()
-                      (interactive)
-                      (start-process-shell-command "volume" nil "pactl set-sink-volume 0 +5%")))
-(exwm-input-set-key (kbd "<XF86AudioLowerVolume>")
-                    (lambda ()
-                      (interactive)
-                      (start-process-shell-command "volume" nil "pactl set-sink-volume 0 -5%")))
+;; (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>")
+;;                     (lambda ()
+;;                       (interactive)
+;;                       (start-process-shell-command "volume" nil "pactl set-sink-volume 0 +5%")))
+;; (exwm-input-set-key (kbd "<XF86AudioLowerVolume>")
+;;                     (lambda ()
+;;                       (interactive)
+;;                       (start-process-shell-command "volume" nil "pactl set-sink-volume 0 -5%")))
 
 (exwm-input-set-key (kbd "s-q") (exwm-layout--exit))
 
