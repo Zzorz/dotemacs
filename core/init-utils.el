@@ -121,6 +121,9 @@
 
 (setq make-backup-files nil)
 
+(setq initial-scratch-message nil)
+
+
 ;; Misc
 (use-package fontawesome)
 (use-package copyit)                    ; copy path, url, etc.

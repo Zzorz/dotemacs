@@ -2,6 +2,9 @@
 ;;; Code:
 (use-package exwm)
 (require 'exwm)
+(require 'exwm-systemtray)
+(require 'exwm-randr)
+(require 'exwm-cm)
 (setq exwm-workspace-number 4)
 ;; Make class name the buffer name
 (add-hook 'exwm-update-class-hook
@@ -25,22 +28,10 @@
                       (start-process-shell-command "rofi" nil "rofi -show window")))
 (exwm-input-set-key (kbd "s-z")
                     (lambda (command)
-                      (interactive (list (read-shell-command "✋ ")))
+                      (interactive (list (read-shell-command "Command:  ")))
                       (start-process-shell-command command nil command)))
 
-
-;; (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>")
-;;                     (lambda ()
-;;                       (interactive)
-;;                       (start-process-shell-command "volume" nil "pactl set-sink-volume 0 +5%")))
-;; (exwm-input-set-key (kbd "<XF86AudioLowerVolume>")
-;;                     (lambda ()
-;;                       (interactive)
-;;                       (start-process-shell-command "volume" nil "pactl set-sink-volume 0 -5%")))
-
 (exwm-input-set-key (kbd "s-q") (exwm-layout--exit))
-
-;;(start-process-shell-command "rofi" nil "dmenu_run")
 
 ;; Line-editing shortcuts
 (exwm-input-set-simulation-keys
@@ -56,9 +47,7 @@
    ([?\C-k] . (S-end delete))))
 ;; Enable EXWM
 
-(require 'exwm-systemtray)
-(require 'exwm-randr)
-(require 'exwm-cm)
+
 ;; Make all Emacs frames opaque.
 (setq window-system-default-frame-alist '((x . ((alpha . 100)))))
 ;; Assign everything else a 80% opacity.
@@ -69,6 +58,9 @@
           (lambda ()
             (start-process-shell-command
              "xrandr" nil "xrandr --output HDMI2 --pos 0x0 --auto --output eDP1 --primary --mode 1920x1080 --pos 0x1080")))
+
+(setq exwm-workspace-minibuffer-position 'bottom)
+(setq exwm-workspace-display-echo-area-timeout '5)
 
 (exwm-randr-enable)
 (exwm-systemtray-enable)

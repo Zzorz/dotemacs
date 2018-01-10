@@ -55,7 +55,7 @@
 (use-package linum-off
   :demand
   :init (add-hook 'after-init-hook #'global-linum-mode)
-  ;; :config (setq linum-format "%4d "))
+  :config ;; (setq linum-format "%4d "))
   (use-package hlinum
     :init
     (hlinum-activate))
@@ -94,16 +94,9 @@
 (when (boundp 'ns-pop-up-frames)
   (setq ns-pop-up-frames nil))
 
-;; Don't use GTK+ tooltip
-(when (boundp 'x-gtk-use-system-tooltips)
-  (setq x-gtk-use-system-tooltips nil))
-
-;; Toggle fullscreen
-;; (bind-keys ([(f11)] . toggle-frame-fullscreen))
-
-(use-package window-numbering
-  :init
-  (window-numbering-mode))
+;; (use-package window-numbering
+;;   :init
+;;   (window-numbering-mode))
 
 (defun set-transparency (value)
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
