@@ -19,6 +19,7 @@
 
 ;; Initialize packages
 (setq package-enable-at-startup nil)    ; To prevent initialising twice
+(package-initialize)
 
 ;; Setup `use-package'
 (unless (package-installed-p 'use-package)
@@ -47,6 +48,13 @@
   (setq paradox-execute-asynchronously t)
   (setq paradox-automatically-star nil)
   (setq paradox-display-star-count nil))
+
+;; ;; Initialization benchmark  *OPTIONAL*
+;; (when my-benchmark-enabled
+;;   (use-package benchmark-init
+;;     :init
+;;     (benchmark-init/activate)
+;;     (add-hook 'after-init-hook #'benchmark-init/deactivate)))
 
 (provide 'init-package)
 
