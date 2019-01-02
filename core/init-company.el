@@ -17,7 +17,7 @@
   ;; aligns annotation to the right hand side
   (setq company-tooltip-align-annotations t)
 
-  (setq company-idle-delay 0.3
+  (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
         company-require-match nil
         company-dabbrev-ignore-case nil
@@ -29,7 +29,7 @@
     :bind (:map company-active-map
                 ("M-h" . company-quickhelp-manual-begin))
     :init (company-quickhelp-mode 1)
-    :config (setq company-quickhelp-delay 0.5))
+    :config (setq company-quickhelp-delay 0.1))
 
   ;; Support yas in commpany
   ;; Note: Must be the last to involve all backends

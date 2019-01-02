@@ -30,13 +30,9 @@
 (require 'init-utils)
 (require 'init-ui)
 
-;;EXWM
-(require 'init-exwm)
-
 (require 'init-company)
 (require 'init-edit)
 (require 'init-ivy)
-;; (require 'init-helm)
 
 (require 'init-yasnippet)
 (require 'init-highlight)

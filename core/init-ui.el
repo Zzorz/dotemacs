@@ -21,8 +21,8 @@
 (set-fringe-mode 0)
 
 ;; Theme
-(use-package doom-themes
-  :init (load-theme 'doom-one t))
+;; (use-package doom-themes
+;;  :init (load-theme 'doom-one t))
 
 ;; Modeline
 (use-package spaceline
@@ -68,19 +68,6 @@
 (setq scroll-step 1
       scroll-margin 1
       scroll-conservatively 100000)
-
-(use-package smooth-scrolling
-  :init (add-hook 'after-init-hook #'smooth-scrolling-mode)
-  :config (setq smooth-scroll-margin 0))
-
-;; Display Time
-(use-package time
-  :ensure nil
-  :unless (display-graphic-p)
-  :preface
-  (setq display-time-24hr-format t)
-  (setq display-time-day-and-date t)
-  :init (add-hook 'after-init-hook #'display-time-mode))
 
 ;; Misc
 (fset 'yes-or-no-p 'y-or-n-p)

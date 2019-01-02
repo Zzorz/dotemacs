@@ -10,20 +10,12 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets) ; Show path if names are same
 (setq adaptive-fill-regexp "[ t]+|[ t]*([0-9]+.|*+)[ t]*")
 (setq adaptive-fill-first-line-regexp "^* *$")
-(setq delete-by-moving-to-trash t)         ; Deleting files go to OS's trash folder
 (setq make-backup-files nil)               ; Forbide to make backup files
-(setq auto-save-default nil)               ; Disable auto save
-(setq set-mark-command-repeat-pop t)       ; Repeating C-SPC after popping mark pops it again
-;; (setq-default kill-whole-line t)           ; Kill line including '\n'
+(setq-default kill-whole-line t)           ; Kill line including '\n'
 
-(setq-default major-mode 'text-mode)
-(add-hook 'text-mode-hook
-          (lambda ()
-            (turn-on-auto-fill)
-            (diminish 'auto-fill-function)))
+(setq-default major-mode 'python-mode)
 
-(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
-(setq sentence-end-double-space nil)
+
 
 (add-hook 'abbrev-mode-hook (lambda () (diminish 'abbrev-mode)))
 
