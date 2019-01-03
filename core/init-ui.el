@@ -21,8 +21,8 @@
 (set-fringe-mode 0)
 
 ;; Theme
-(use-package doom-themes
-  :init (load-theme 'doom-one t))
+(use-package srcery-theme
+  :init (load-theme 'srcery t))
 
 ;; Modeline
 (use-package spaceline
@@ -33,18 +33,18 @@
   )
 
 ;; Fonts
-(use-package cnfonts
-  :init
-  (add-hook 'after-init-hook #'cnfonts-enable)
-  :config
-  (setq cnfonts-keep-frame-size nil)
-  (setq cnfonts-profiles
-        '("program1" "program2" "program3" "org-mode" "read-book"))
-  (setq cnfonts--profiles-steps '(("program1" . 4)
-                                  ("program2" . 5)
-                                  ("program3" . 3)
-                                  ("org-mode" . 6)
-                                  ("read-book" . 8))))
+;; (use-package cnfonts
+;;   :init
+;;   (add-hook 'after-init-hook #'cnfonts-enable)
+;;   :config
+;;   (setq cnfonts-keep-frame-size nil)
+;;   (setq cnfonts-profiles
+;;         '("program1" "program2" "program3" "org-mode" "read-book"))
+;;   (setq cnfonts--profiles-steps '(("program1" . 4)
+;;                                   ("program2" . 5)
+;;                                   ("program3" . 3)
+;;                                   ("org-mode" . 6)
+;;                                   ("read-book" . 8))))
 
 ;; Line and Column
 (setq-default fill-column 80)
@@ -84,7 +84,7 @@
 
 ;; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq inhibit-startup-screen t)
+;; (setq inhibit-startup-screen t)
 (size-indication-mode 1)
 (blink-cursor-mode -1)
 (setq track-eol t)                      ; Keep cursor at end of lines. Require line-move-visual is nil.
@@ -94,17 +94,25 @@
 (when (boundp 'ns-pop-up-frames)
   (setq ns-pop-up-frames nil))
 
-;; (use-package window-numbering
-;;   :init
-;;   (window-numbering-mode))
+(use-package window-numbering
+  :init
+  (window-numbering-mode))
 
-(defun set-transparency (value)
-  "Sets the transparency of the frame window. 0=transparent/100=opaque"
-  (interactive "nTransparency Value 0 - 100 opaque:")
-  (set-frame-parameter (selected-frame) 'alpha value))
+;; (defun set-transparency (value)
+;;   "Sets the transparency of the frame window. 0=transparent/100=opaque"
+;;   (interactive "nTransparency Value 0 - 100 opaque:")
+;;   (set-frame-parameter (selected-frame) 'alpha value))
+;; (set-transparency 87)
+;; (toggle-frame-fullscreen)
+;; set transparency
 
-(set-transparency 87)
-(toggle-frame-fullscreen)
+(set-frame-parameter (selected-frame) 'alpha '(95 95))
+(add-to-list 'default-frame-alist '(alpha 93 93))
+;; font
+(add-to-list 'default-frame-alist '(fullscreen . fullboth))
+(add-to-list 'default-frame-alist '(font . "Hack-14"))
+;; cursor color
+(add-to-list 'default-frame-alist '(cursor-color . "white"))
 
 (provide 'init-ui)
 

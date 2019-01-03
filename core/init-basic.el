@@ -10,10 +10,6 @@
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
-;; Start server
-(use-package server
-  :ensure nil
-  :init (add-hook 'after-init-hook #'server-mode))
 
 ;; History
 ;; (use-package saveplace

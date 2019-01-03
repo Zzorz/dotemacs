@@ -3,8 +3,9 @@
 
 (use-package company
   :diminish company-mode
-  :bind (("M-/" . company-complete)
-         ("C-c C-y" . company-yasnippet)
+  :bind (
+         ;;("M-/" . company-complete)
+         ;;("C-c C-y" . company-yasnippet)
          :map company-active-map
          ("C-p" . company-select-previous)
          ("C-n" . company-select-next)
@@ -17,19 +18,12 @@
   ;; aligns annotation to the right hand side
   (setq company-tooltip-align-annotations t)
 
-  (setq company-idle-delay 0.3
+  (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil)
 
-  ;; Popup documentation for completion candidates
-  (use-package company-quickhelp
-    :if (display-graphic-p)
-    :bind (:map company-active-map
-                ("M-h" . company-quickhelp-manual-begin))
-    :init (company-quickhelp-mode 1)
-    :config (setq company-quickhelp-delay 0.5))
 
   ;; Support yas in commpany
   ;; Note: Must be the last to involve all backends
@@ -44,6 +38,15 @@
               '(:with company-yasnippet))))
 
   (setq company-backends (mapcar #'company-backend-with-yas company-backends)))
+
+;; Popup documentation for completion candidates
+(use-package company-quickhelp
+  :bind (:map company-active-map
+              ("M-h" . company-quickhelp-manual-begin))
+  :init
+  (add-hook 'after-init-hook  #'company-quickhelp-mode)
+  ;; :init (company-quickhelp-mode 1)
+  :config (setq company-quickhelp-delay 0.5))
 
 (provide 'init-company)
 

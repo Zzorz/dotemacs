@@ -31,7 +31,7 @@
 (require 'init-ui)
 
 ;;EXWM
-(require 'init-exwm)
+;; (require 'init-exwm)
 
 (require 'init-company)
 (require 'init-edit)
