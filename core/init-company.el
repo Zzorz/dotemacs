@@ -2,51 +2,32 @@
 ;;; Code:
 
 (use-package company
-  :diminish company-mode
-  :bind (
-         ;;("M-/" . company-complete)
-         ;;("C-c C-y" . company-yasnippet)
-         :map company-active-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next)
-         ;; ("<tab>" . company-complete-selection)
-         :map company-search-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next))
-  :init (add-hook 'after-init-hook #'global-company-mode)
-  :config
-  ;; aligns annotation to the right hand side
-  (setq company-tooltip-align-annotations t)
-
-  (setq company-idle-delay 0.1
-        company-minimum-prefix-length 2
-        company-require-match nil
-        company-dabbrev-ignore-case nil
-        company-dabbrev-downcase nil)
-
-
-  ;; Support yas in commpany
-  ;; Note: Must be the last to involve all backends
-  (defvar company-enable-yas t
-    "Enable yasnippet for all backends.")
-
-  (defun company-backend-with-yas (backend)
-    (if (or (not company-enable-yas)
-            (and (listp backend) (member 'company-yasnippet backend)))
-        backend
-      (append (if (consp backend) backend (list backend))
-              '(:with company-yasnippet))))
-
-  (setq company-backends (mapcar #'company-backend-with-yas company-backends)))
-
-;; Popup documentation for completion candidates
-(use-package company-quickhelp
-  :bind (:map company-active-map
-              ("M-h" . company-quickhelp-manual-begin))
   :init
-  (add-hook 'after-init-hook  #'company-quickhelp-mode)
-  ;; :init (company-quickhelp-mode 1)
-  :config (setq company-quickhelp-delay 0.5))
+  (add-hook 'after-init-hook 'global-company-mode)
+  :bind(
+        :map company-search-map
+        ("C-p" . company-select-previous)
+        ("C-n" . company-select-next)
+        :map company-active-map
+        ("C-p" . company-select-previous)
+        ("C-n" . company-select-next)
+        )
+  :config
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 2)
+  (use-package company-lsp
+    :config
+    (push 'company-lsp company-backends)
+    )
+  (use-package yasnippet
+    :diminish yas-minor-mode
+    :init (add-hook 'after-init-hook #'yas-global-mode)
+    :config (use-package yasnippet-snippets)
+    (push 'company-yasnippet company-backends)
+    (yas-global-mode)
+    )
+  )
+
 
 (provide 'init-company)
 

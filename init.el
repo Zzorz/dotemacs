@@ -1,72 +1,25 @@
-;; ;; Added by Package.el.  This must come before configurations of
-;; ;; installed packages.  Don't delete this line.  If you don't want it,
-;; ;; just comment it out by adding a semicolon to the start of the line.
-;; ;; You may delete these explanatory comments.
-;; (package-initialize)
-
-;; Optimize loading performance
-(defvar default-file-name-handler-alist file-name-handler-alist)
-(setq file-name-handler-alist nil)
-(setq gc-cons-threshold 30000000)
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            "Restore defalut values after init"
-            (setq file-name-handler-alist default-file-name-handler-alist)
-            (setq gc-cons-threshold 800000)))
-
-;; Prefers the newest version of a file
-;; (setq load-prefer-newer t)
-
 ;; Load path
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 
-;; Packages
-(require 'init-package)
+;; Package Manager
+(require 'init-package-manager)
 
 ;; Preferences
-(require 'init-basic)
-(require 'init-utils)
 (require 'init-ui)
-
-;;EXWM
-;; (require 'init-exwm)
-
-(require 'init-company)
+(require 'init-utils)
 (require 'init-edit)
-(require 'init-ivy)
-;; (require 'init-helm)
-
-(require 'init-yasnippet)
 (require 'init-highlight)
+(require 'init-ivy)
+(require 'init-company)
 
-(require 'init-shell)
-;; (require 'init-calendar)
-;; (require 'init-dired)
-;; (require 'init-org)
-
-
-;; (require 'init-eshell)
-;; (require 'init-ibuffer)
-;; (require 'init-kill-ring)
-;; (require 'init-window)
-
-
-;; Programming
-(require 'init-flycheck)
-
-(require 'init-emacs-lisp)
-(require 'init-c)
-;; (require 'init-go)
-(require 'init-python)
-(require 'init-ruby)
-(require 'init-web)
-;; (require 'init-prog)
+(require 'init-lsp)
+(require 'init-latex)
 
 ;; Restore
 ;; (require 'init-restore)
-
+;; (require 'init-yasnippet)
 
 
 
